@@ -20,7 +20,7 @@ body {
 }
 
 #results{
-  list-style: none;
+  /* list-style: ; */
   padding: 0px;
   width: 250px;
   position: absolute;

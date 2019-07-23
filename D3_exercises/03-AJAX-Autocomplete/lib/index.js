@@ -1,30 +1,36 @@
 // TODO: Autocomplete the input with AJAX calls.
-// function clear() {
-//   document.getElementsByTagName("li").innerHTML = "";
+
+
+////////////////////////////////////////////////////////////////////////////////////
+// var input = new XMLHttpRequest();
+// var ids = document.getElementById("search");
+
+// xhr.onload = function (){
+//   if (this.status === 200){
+//     ids = ids.responseText;
+//   }
 // }
 
-// document.getElementById("results").onclick = function() { 
-//   clear(); 
-// } 
-// var ourRequest = new XMLHttpRequest();
-// ourRequest.open("GET", "https://recode-dictionary.herokuapp.com/autocomplete/:stem");
-// ourRequest.onload = function(){
-//   var ourData = JSON.parse(ourRequest.responseText);
-//   renderHTML(ourData);
-// };
-// ourRequest.send();
+// xhr.open("GET", "https://recode-dictionary.herokuapp.com/autocomplete/", true);
+// xhr.send();
 
-// function renderHTML(data){
+var userInput = document.querySelector("#search");
+userInput.addEventListener("keyup", function() {
+  const url =
+    `https://recode-dictionary.herokuapp.com/autocomplete/` + userInput.value;
 
-// }
-var ourRequest = new XMLHttpRequest();
-var ids = document.getElementById("results");
+  fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // console.log(data.words);
 
-xhr.onload = function (){
-  if (this.status === 200){
-    ids = ids.responseText;
-  }
-}
-
-xhr.open("GET", "https://recode-dictionary.herokuapp.com/autocomplete/", true);
-xhr.send();
+      for(const i in data.words)
+        var x = document.createElement("LI"); 
+      var textnode = document.createTextNode("");                       
+      textnode.appendChild(x).innerHTML = i;                              
+    });
+});
