@@ -1,6 +1,7 @@
 {
   "license": "UNLICENSED",
   "dependencies": {
+    "autocomplete.js": "^0.36.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "webpack": "^4.35.3",
